@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Internet_shop
 {
-    internal class Cuctomer
+    internal class Cuctomer:ISale
     {
         List<Transaction> lst = new List<Transaction>();
         public string _Name { get; init; }
@@ -22,7 +22,10 @@ namespace Internet_shop
         public void Sale(Shop shop, Dictionary<Product, int> dict) 
         {
             if (shop == null || dict == null) throw new ArgumentException("no good");
-            lst.Add(new Transaction(shop, this, dict));
+            Transaction transaction = new Transaction(shop, this, dict);
+            lst.Add(transaction);
+            shop.addCustomer(this);
+            shop.addTtansaction(transaction);
         }
 
         public override string ToString()

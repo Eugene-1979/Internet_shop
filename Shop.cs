@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace Internet_shop
 {
-    internal class Shop
+    internal class Shop: IAddCategory, Iadd_Product, IAddSalesman, IaddTtansaction, IaddCustomer
     {
         readonly Director _Director;
 
         Dictionary<Product, int> _Product= new Dictionary<Product, int>();
+       List<Cuctomer> cuctomers = new List<Cuctomer>();
+       List<Transaction> transactions = new List<Transaction>();
 
-       
+
+        public void addTtansaction(Transaction tr) {
+            transactions.Add(tr);
+        }
+        public void addCustomer(Cuctomer cust) {
+            cuctomers.Add(cust);
+        }
 
         public bool IsProduct(string str) {
        
@@ -93,10 +101,10 @@ public string Name { get; init; }
 
 
 
-
+            string stsok = _salesmans.Count > 1 ? "цы" : "ец";
             return $@"{{{nameof(Name)}={Name}}} 
 Director{_Director} 
-Продавецы
+Продав{stsok}
 {salesmanSB.ToString()}
 Продукты
 {productSB.ToString()}

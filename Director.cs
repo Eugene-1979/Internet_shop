@@ -26,15 +26,18 @@ namespace Internet_shop
         }
 
 
-        /*только директор может добавлять категории*/
-        void AddCategory (Shop shop,string category ) {
+     /*   только директор может добавлять категории*/
+        void AddCategory(Shop shop, string category)
+        {
             shop.AddCategory(category, this);
-       
+
         }
 
         public override string ToString()
         {
             return $"{{{nameof(Name)}={Name}}}";
         }
+
+     
     }
 }
